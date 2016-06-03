@@ -1,0 +1,6 @@
+data/user
+data/userlist
+*.log
+data/img/*.jpg
+data/*.html
+
