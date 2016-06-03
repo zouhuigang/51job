@@ -3,4 +3,5 @@ data/userlist
 *.log
 data/img/*.jpg
 data/*.html
+*.exe
 
