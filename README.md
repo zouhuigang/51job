@@ -15,8 +15,6 @@ pikapika，振奋人心的口号！
 # 进展：
 一期：51job  2016/5 陈锦瀚
 
-
-# 51job运行方式
 # PikaPika部署说明
 
 # 软件要求
@@ -68,6 +66,7 @@ mysql数据库(建议数据库遵循中国-北京时间)
 请自行修改
 
 # 访问链接
-1.[http://localhost:8099/](http://localhost:8099/) 爬虫控制台
-1.[http://localhost:8088/](http://localhost:8088/) 网站
+[http://localhost:8099/](http://localhost:8099/) 爬虫控制台
+
+[http://localhost:8088/](http://localhost:8088/) 网站
 
