@@ -16,6 +16,7 @@ declare -a pkgs=(
 	github.com/beego/i18n
 	github.com/gorilla/websocket
 	github.com/go-sql-driver/mysql
+	golang.org/x/net/html
 )
 
 echo "======== 下载外部包 开始========"
