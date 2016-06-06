@@ -149,6 +149,7 @@ window.addEventListener("load", function(evt) {
 
     document.getElementById("send").onclick = function(evt) {
         if (!ws) {
+             alert("请先开启爬虫再运行")
             return false;
         }
         var s = keyword.value + "|" + address.value + "|" + kind.value
