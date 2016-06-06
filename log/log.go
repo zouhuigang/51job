@@ -49,7 +49,8 @@ func Println(v ...interface{}) {
 func Fatal(format string, v ...interface{}) {
 	log.Error(format, v...)
 	Conn.WriteMessage(1, []byte(fmt.Sprintf(format, v...)))
-	os.Exit(1)
+	// os.Exit(1)
+
 }
 func Info(format string, v ...interface{}) {
 	log.Info(format, v...)
@@ -58,7 +59,7 @@ func Info(format string, v ...interface{}) {
 func Error(format string, v ...interface{}) {
 	log.Error(format, v...)
 	Conn.WriteMessage(1, []byte(fmt.Sprintf(format, v...)))
-	os.Exit(1)
+	// os.Exit(1))
 }
 
 func Trace(format string, v ...interface{}) {

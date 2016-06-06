@@ -19,12 +19,14 @@ func LoginData() url.Values {
 	logindata, e := util.Get(cons.Loginurl, cons.Requestheader)
 	if e != nil {
 		log.Fatal(e.Error())
+		Close()
 	}
 	ioutil.WriteFile(cons.LoginData, logindata, 0644)
 	// 找出隐藏字段
 	oldAccessKey, sc, ec := FindHideen(logindata)
 	if oldAccessKey == "" || sc == "" || ec == "" {
 		log.Println("莫名失败！！！")
+		log.Println("继续尝试连接，可能网络不好")
 		return LoginData()
 	} else {
 		postdata.Set("checkCode", "")
@@ -51,6 +53,7 @@ func Login() []byte {
 	data, e := util.Post(cons.Realloginurl, postdata, cons.S1header)
 	if e != nil {
 		log.Fatal(e.Error())
+		Close()
 	}
 	ioutil.WriteFile(cons.RealLoginData, data, 0644)
 	forceurl, forcedata := ForceDown(data)
@@ -72,6 +75,7 @@ func SearchIndex() []byte {
 	data, e := util.Get(cons.Searchurl, cons.Requestheader)
 	if e != nil {
 		log.Fatal(e.Error())
+		Close()
 	}
 	charst := []byte("<meta charset='utf-8' />")
 	data = append(charst, data...)

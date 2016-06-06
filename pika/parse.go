@@ -141,6 +141,7 @@ func DeadPika(data []byte) {
 		log.Printf("%s", string(data))
 		//还有保密的简历要检测大小
 		log.Fatal("速度太快了，死掉了！！")
+		Close()
 	}
 }
 
@@ -151,6 +152,7 @@ func DeadSearch(data []byte) {
 	nodet := doc.Find("title").Text()
 	if strings.Contains(nodet, "错误") {
 		log.Fatal("不能搜索，被禁掉了！！哇哈哈哈")
+		Close()
 	}
 
 }
