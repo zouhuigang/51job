@@ -125,7 +125,7 @@
         <tr>
         <td>{{$index}}</td>
         <td>
-        <a href="/job?k={{$.Pk}}&id={{$u.Id51}}" target="__blank" alt="{{$u.Id51}}">
+        <a href="/job?k={{$.Pk}}&id={{$u.Id51}}" target="_blank" alt="{{$u.Id51}}">
         <img src="/img?id={{$u.Id51}}" style="width:150px;height:150px" alt="{{$u.Id51}}"/></a>
 
         </td>

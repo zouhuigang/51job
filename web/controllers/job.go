@@ -5,6 +5,7 @@ import (
 	"51job/web/models"
 	_ "github.com/beego/i18n"
 	"io/ioutil"
+	"strings"
 )
 
 type JobController struct {
@@ -71,5 +72,26 @@ func (this *JobController) ImgPika() {
 		this.Ctx.ResponseWriter.Write(data)
 		this.StopRun()
 	}
+	this.Ctx.ResponseWriter.Write(data)
+}
+
+func (this *JobController) DownPika() {
+	id := this.GetString("id")
+	if id == "" {
+		this.StopRun()
+	}
+	if strings.HasPrefix(id, "../data/user/") {
+
+	} else {
+		this.StopRun()
+	}
+	data, e := ioutil.ReadFile(id)
+	if e != nil {
+		this.StopRun()
+	}
+	this.Ctx.Output.Header("Content-type", "application/octet-stream")
+	a := strings.Split(id, "/")
+	filename := strings.Join(a[3:], "-")
+	this.Ctx.Output.Header("Content-Disposition", "attachment;filename="+filename)
 	this.Ctx.ResponseWriter.Write(data)
 }

@@ -84,7 +84,7 @@
         <td>{{$u.Keyword.Keyword}}</td>
         <td>{{$u.Keyword.Kind}}</td>
         <td>{{$u.Keyword.Address}}</td>
-		<td>{{$u.FileAddress}}</td>
+		<td><a href="/download?id={{$u.FileAddress}}" target="_blank">{{$u.FileAddress}}</a></td>
         <td>{{dateformat $u.Date51 "2006-01-02"}}</td>
         <td>{{dateformat $u.Created "2006-01-02 15:04:05"}}</td>
         </tr>

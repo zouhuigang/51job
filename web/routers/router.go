@@ -12,4 +12,5 @@ func init() {
 	beego.Router("/intro", &controllers.JobController{}, "*:Intro")
 	beego.Router("/img", &controllers.JobController{}, "*:Img")
 	beego.Router("/imgp", &controllers.JobController{}, "*:ImgPika")
+	beego.Router("/download", &controllers.JobController{}, "*:DownPika")
 }
