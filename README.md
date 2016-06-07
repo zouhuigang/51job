@@ -61,6 +61,12 @@ mysql数据库(建议数据库遵循中国-北京时间)
  	cd 51job/web
  	bee run
 
+如果小蜜蜂安装失败，请按照以下操作
+
+	cd 51job/web
+	go build main.go
+	./main
+	
 配置文件在51job/web/conf/app.conf
 	
 	httpaddr = "127.0.0.1" //地址
