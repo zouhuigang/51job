@@ -46,6 +46,13 @@ mysql数据库(建议数据库遵循中国-北京时间)
 6.进入51job/server，运行webserver.go开启爬虫服务，端口默认8099，可以更改
  	
  	go run webserver.go
+ 	
+ 配置文件在51job/cons/cons.go
+
+	 //更改数据库配置
+	const (
+		Db = "root:6833066@/beego_blog?charset=utf8&loc=Local"
+	)
 
 ## 开启网站服务
  7.开启小蜜蜂，安装bee工具
