@@ -21,7 +21,7 @@ var (
 )
 
 func init() {
-	os.MkdirAll("../data/img/", 0777)
+	os.MkdirAll(cons.ImagePath, 0777)
 	stop = true
 }
 

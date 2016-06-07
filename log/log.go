@@ -9,6 +9,9 @@ import (
 	"time"
 )
 
+// 保存爬虫日志到本地？
+var openlog = false
+
 var log *logs.BeeLogger
 var Conn *websocket.Conn
 
@@ -26,8 +29,9 @@ func init() {
 	log.EnableFuncCallDepth(true)
 	log.SetLogFuncCallDepth(3)
 	// log.SetLogger("console", ``)
-
-	log.SetLogger("multifile", `{"filename":"`+timetoday+`/51job.log","separate":[ "error", "warning", "info", "debug"]}`)
+	if openlog {
+		log.SetLogger("multifile", `{"filename":"`+timetoday+`/51job.log","separate":[ "error", "warning", "info", "debug"]}`)
+	}
 
 }
 

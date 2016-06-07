@@ -12,15 +12,6 @@ import (
 )
 
 func init() {
-	/*	参数1        数据库的别名，用来在ORM中切换数据库使用
-		参数2        driverName
-		参数3        对应的链接字符串
-		set default database
-		orm.RegisterDataBase("default", "mysql", "root:6833066@/51job?charset=utf8", 30)
-		orm.SetMaxIdleConns("default", 30)
-		orm.SetMaxOpenConns("default", 30)
-		参数4(可选)  设置最大空闲连接
-		参数5(可选)  设置最大数据库连接 (go >= 1.2)*/
 	maxIdle := 30
 	maxConn := 30
 	orm.RegisterDataBase("default", "mysql", cons.Db, maxIdle, maxConn)
@@ -28,16 +19,19 @@ func init() {
 	// 设置为 UTC 时间
 	orm.DefaultTimeLoc = time.Local
 	//打出查询语句
-	orm.Debug = false
-	w, _ := os.OpenFile("../data/db.log", os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+	orm.Debug = cons.OpenDbLog
+	w, _ := os.OpenFile(cons.LogPath, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	orm.DebugLog = orm.NewLog(w)
-
+	// 需要在init中注册定义的model
+	orm.RegisterModelWithPrefix("51job_", new(User), new(UserKeyword), new(Userinfo), new(Keyword))
+	// create table
+	// orm.RunSyncdb("default", false, true)
 }
+
 func SaveUser(today string, u *User, data []byte, keepfile string, keyword string, address string, kind string) error {
 	t, _ := time.ParseInLocation("20060102", today, time.Local)
 	// log.Fatal("%s", t)
 	o := orm.NewOrm()
-	o.Using("default") // 默认使用 default，你可以指定为其他数
 	err := o.Begin()
 	uk := new(UserKeyword)
 	uk.Id51 = u.Id51

@@ -12,6 +12,13 @@ import (
 //数据库配置
 const (
 	Db = "root:6833066@/beego_blog?charset=utf8&loc=Local"
+	//数据库日志
+	LogPath = "../log/db.log"
+	//开启日志？
+	OpenDbLog = false
+
+	//用户头像保留地
+	ImagePath = "../data/img/"
 )
 
 const (

@@ -1,7 +1,7 @@
 package model
 
 import (
-	"github.com/astaxie/beego/orm"
+	// "github.com/astaxie/beego/orm"
 	_ "github.com/go-sql-driver/mysql" // import your used driver
 	_ "io"
 	"time"
@@ -66,12 +66,4 @@ func (u *User) TableEngine() string {
 // 设置引擎为 INNODB
 func (u *UserKeyword) TableEngine() string {
 	return "INNODB"
-}
-
-func init() {
-
-	// 需要在init中注册定义的model
-	orm.RegisterModelWithPrefix("51job_", new(User), new(UserKeyword), new(Userinfo), new(Keyword))
-	// create table
-	orm.RunSyncdb("default", false, true)
 }
