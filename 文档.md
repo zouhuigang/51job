@@ -75,7 +75,7 @@ mysql数据库(建议数据库遵循中国-北京时间)
 ## 开启网站服务
  7.开启小蜜蜂，安装bee工具
 
-	go insatll github.com/beego/bee
+	go install github.com/beego/bee
  	cd 51job/web
  	bee run
 
