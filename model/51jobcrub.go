@@ -12,16 +12,16 @@ import (
 )
 
 func init() {
-	maxIdle := 30
-	maxConn := 30
-	orm.RegisterDataBase("default", "mysql", cons.Db, maxIdle, maxConn)
-
 	// 设置为 UTC 时间
 	orm.DefaultTimeLoc = time.Local
 	//打出查询语句
 	orm.Debug = cons.OpenDbLog
 	w, _ := os.OpenFile(cons.LogPath, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
 	orm.DebugLog = orm.NewLog(w)
+
+	maxIdle := 30
+	maxConn := 30
+	orm.RegisterDataBase("default", "mysql", cons.Db, maxIdle, maxConn)
 	// 需要在init中注册定义的model
 	orm.RegisterModelWithPrefix("51job_", new(User), new(UserKeyword), new(Userinfo), new(Keyword))
 	// create table
