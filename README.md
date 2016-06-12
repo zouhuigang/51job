@@ -62,7 +62,6 @@ mysql数据库(建议数据库遵循中国-北京时间)
 		LogPath = "../log/db.log"
 		//开启日志？
 		OpenDbLog = false
-
 		//用户头像保留地
 		ImagePath = "../data/img/"
 	)
@@ -89,10 +88,12 @@ mysql数据库(建议数据库遵循中国-北京时间)
 	
 	httpaddr = "127.0.0.1" //地址
 	httpport = 8088         //端口
-	mysqluser = "root"   
-	mysqlpass = "rootpass"
+	mysqluser = "root"
+	mysqlpass = "6833066"
 	mysqlurls = "127.0.0.1"
-	mysqldb   = "beego"
+	mysqlport = 3306
+	mysqldb   = "51job"
+	pikapika="127.0.0.1:8099" //爬虫控制台地址
 
 请自行修改
 

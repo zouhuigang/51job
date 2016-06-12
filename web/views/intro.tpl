@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>舜飞简历</title>
+    <title>PikaPika {{i18n .Lang "home.resume"}}|Sunteng</title>
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <!-- Bootstrap -->
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -34,16 +34,15 @@
 <body class="starter-template">
 <nav class="navbar">
 <ul class="nav nav-tabs">
-    <li role="presentation"><a href="/">首页</a></li>
-    <li role="presentation"><a href="http://127.0.0.1:8099" target="_blank">简历爬取</a></li>
-    <li role="presentation"  class="active"><a href="/intro" target="_blank">使用说明</a></li>
+    <li role="presentation"><a href="/">{{i18n .Lang "home.index"}}</a></li>
+    <li role="presentation"  class="active"><a href="/intro" target="_blank">{{i18n .Lang "home.intro"}}</a></li>
 </ul>
 </nav>
 
 <div id="body" class="container-fluid">
 <h3>使用说明</h3>
 <ol id="intr">
-<li>点击简历爬取，需先手动打开服务，简历爬取监听号：8099，间歇性失败</li>
+<li>点击简历爬取，需先手动打开服务，简历爬取点击：<a href="http://{{.pikapika}}" target="_blank">简历爬取</a></li>
 <li>点击首页后可以查看所有简历，可按关键字/地点搜索，留空即不参与搜索</li>
 <li>项目名：PikaPika|疑问联系：后端陈锦瀚</li>
 </ol>

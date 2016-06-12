@@ -1,22 +1,37 @@
 package models
 
 import (
-	"51job/model"
-	// "fmt"
+	"fmt"
+	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm"
+	_ "github.com/go-sql-driver/mysql" // import your used driver
 	"strconv"
+	"time"
 )
 
-var o = orm.NewOrm()
-
 func init() {
-	o.Using("default") // 默认使用 default，你可以指定为其他数据库
+	// 设置为 UTC 时间
+	orm.DefaultTimeLoc = time.Local
+	maxIdle := 30
+	maxConn := 30
+	mysqluser := beego.AppConfig.String("mysqluser")
+	mysqlpass := beego.AppConfig.String("mysqlpass")
+	mysqlurls := beego.AppConfig.String("mysqlurls")
+	mysqlport := beego.AppConfig.String("mysqlport")
+	mysqldb := beego.AppConfig.String("mysqldb")
+
+	Db := mysqluser + ":" + mysqlpass + "@tcp(" + mysqlurls + ":" + mysqlport + ")/" + mysqldb + "?charset=utf8&loc=Local"
+	fmt.Println(Db)
+	orm.RegisterDataBase("default", "mysql", Db, maxIdle, maxConn)
+	// 需要在init中注册定义的model
+	orm.RegisterModelWithPrefix("51job_", new(User), new(UserKeyword), new(Userinfo), new(Keyword))
 }
 
-func ListUser(sex string, keyword string, limit interface{}, args ...interface{}) []*model.User {
+func ListUser(sex string, keyword string, limit interface{}, args ...interface{}) []*User {
+	o := orm.NewOrm()
 	if keyword == "" {
-		var users []*model.User
-		user := new(model.User)
+		var users []*User
+		user := new(User)
 		us := o.QueryTable(user)
 		if sex == "1" {
 			us.Limit(limit, args...).Filter("Sex", "女").OrderBy("-Date51").All(&users)
@@ -45,9 +60,9 @@ func ListUser(sex string, keyword string, limit interface{}, args ...interface{}
 	}
 	numi := int(num)
 	if numi > 0 {
-		var userss = make([]*model.User, 0, numi)
+		var userss = make([]*User, 0, numi)
 		for i := 0; i < numi; i++ {
-			u := model.User{Id51: lists[i][0].(string)}
+			u := User{Id51: lists[i][0].(string)}
 			o.Read(&u, "Id51")
 			// fmt.Println(lists[i][0].(string))
 			userss = append(userss, &u)
@@ -62,9 +77,10 @@ func ListUser(sex string, keyword string, limit interface{}, args ...interface{}
 }
 
 func UserBrotherByKeyword(kid string, id string) []string {
+	o := orm.NewOrm()
 	returns := make([]string, 0, 2)
 	if kid == "" {
-		tempu := model.User{Id51: id}
+		tempu := User{Id51: id}
 		o.Read(&tempu, "Id51")
 
 		var listsu []orm.ParamsList
@@ -90,7 +106,7 @@ func UserBrotherByKeyword(kid string, id string) []string {
 	/**/
 	/**/
 
-	temp := model.UserKeyword{Id51: id}
+	temp := UserKeyword{Id51: id}
 	o.Read(&temp, "Id51")
 
 	var lists []orm.ParamsList
@@ -113,24 +129,27 @@ func UserBrotherByKeyword(kid string, id string) []string {
 	return returns
 
 }
-func ListKeyword() []*model.Keyword {
-	var keywords []*model.Keyword
-	user := new(model.Keyword)
+func ListKeyword() []*Keyword {
+	o := orm.NewOrm()
+	var keywords []*Keyword
+	user := new(Keyword)
 	us := o.QueryTable(user)
 	us.OrderBy("-Time51", "-Created").All(&keywords)
 	return keywords
 }
 
-func ListOneKeyword(id int) *model.Keyword {
-	temp := &model.Keyword{Id: id}
+func ListOneKeyword(id int) *Keyword {
+	o := orm.NewOrm()
+	temp := &Keyword{Id: id}
 	o.Read(temp)
 	return temp
 }
 
 func CountUser(keyword string, sex string) int64 {
+	o := orm.NewOrm()
 	var num = int64(0)
 	if keyword == "" {
-		user := new(model.User)
+		user := new(User)
 		us := o.QueryTable(user)
 		if sex == "1" {
 			num, _ = us.Filter("Sex", "女").Count()
@@ -162,17 +181,19 @@ func CountUser(keyword string, sex string) int64 {
 
 }
 
-func ListUserHistroy(user string) []*model.UserKeyword {
-	var userkeyword []*model.UserKeyword
-	userhistry := new(model.UserKeyword)
+func ListUserHistroy(user string) []*UserKeyword {
+	o := orm.NewOrm()
+	var userkeyword []*UserKeyword
+	userhistry := new(UserKeyword)
 	oo := o.QueryTable(userhistry)
 	oo.Filter("Id51", user).OrderBy("-Created").RelatedSel().All(&userkeyword)
 	return userkeyword
 }
 
-func ListUserInfo(user string) model.Userinfo {
-	var userinfo model.Userinfo
-	info := new(model.Userinfo)
+func ListUserInfo(user string) Userinfo {
+	o := orm.NewOrm()
+	var userinfo Userinfo
+	info := new(Userinfo)
 	o.QueryTable(info).Filter("Id51", user).RelatedSel().One(&userinfo)
 	return userinfo
 }

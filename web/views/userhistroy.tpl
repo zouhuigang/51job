@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>编号{{.User.User.Id51}}|PikaPika</title>
+    <title>{{.User.User.Id51}}|PikaPika</title>
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <!-- Bootstrap -->
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -31,9 +31,8 @@
 <body class="starter-template">
 <nav class="navbar">
 <ul class="nav nav-tabs">
-    <li role="presentation"><a href="/">首页</a></li>
-    <li role="presentation"><a href="http://127.0.0.1:8099" target="_blank">简历爬取</a></li>
-    <li role="presentation"><a href="/intro" target="_blank">使用说明</a></li>
+    <li role="presentation" class="active"><a href="/">{{i18n .Lang "home.index"}}</a></li>
+    <li role="presentation"><a href="/intro" target="_blank">{{i18n .Lang "home.intro"}}</a></li>
 </ul>
 </nav>
 

@@ -3,6 +3,7 @@ package controllers
 import (
 	"51job/cons"
 	"51job/web/models"
+	"github.com/astaxie/beego"
 	_ "github.com/beego/i18n"
 	"io/ioutil"
 	"strings"
@@ -44,6 +45,8 @@ func (this *JobController) Get() {
 }
 
 func (this *JobController) Intro() {
+	pikapika := beego.AppConfig.String("pikapika")
+	this.Data["pikapika"] = pikapika
 	this.TplName = "intro.tpl"
 }
 

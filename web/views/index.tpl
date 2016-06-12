@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>PikaPika简历|Sunteng</title>
+    <title>PikaPika {{i18n .Lang "home.resume"}}|Sunteng</title>
     <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
     <!-- Bootstrap -->
     <link href="/static/css/bootstrap.min.css" rel="stylesheet">
@@ -31,15 +31,14 @@
 <body class="starter-template">
 <nav class="navbar">
 <ul class="nav nav-tabs">
-    <li role="presentation" class="active"><a href="/">首页</a></li>
-    <li role="presentation"><a href="http://127.0.0.1:8099" target="_blank">简历爬取</a></li>
-    <li role="presentation"><a href="/intro" target="_blank">使用说明</a></li>
+    <li role="presentation" class="active"><a href="/">{{i18n .Lang "home.index"}}</a></li>
+    <li role="presentation"><a href="/intro" target="_blank">{{i18n .Lang "home.intro"}}</a></li>
 </ul>
 </nav>
 
 <div id="body" class="container-fluid">
   <div> 
-    <h1>简历 <small>PikaPika|{{.Count}}条</small>
+    <h1>{{i18n .Lang "home.resume"}} <small>PikaPika|{{.Count}}</small>
 <br />
     {{if .K}}
     <blockquote>
@@ -62,12 +61,12 @@
     <div class="col-md-2"> 
       <select class="form-control" id="sex">
       <option value=""></option>
-      <option value="1">妹纸</option>
-      <option value="0">屌丝</option>
+      <option value="1">{{i18n .Lang "home.woman"}}</option>
+      <option value="0">{{i18n .Lang "home.man"}}</option>
       </select>
     </div>
     <div class="col-md-3">
-       <button class="btn btn-primary btn-default" style="width:100%" onclick="search()">搜索</button>
+       <button class="btn btn-primary btn-default" style="width:100%" onclick="search()">{{i18n .Lang "home.search"}}</button>
        <script type="text/javascript">
            function search(){
             var id=$("#jinhan").val()

@@ -62,7 +62,7 @@ func (this *baseController) Prepare() {
 
 	// 2. Default language is English.
 	if len(this.Lang) == 0 {
-		this.Lang = "en-US"
+		this.Lang = "zh-CN"
 	}
 
 	// Set template level language option.
