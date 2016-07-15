@@ -12,7 +12,7 @@ import (
 //数据库配置
 const (
 	//数据库账号:数据库密码@tcp(数据库ip:端口号)/数据库名?编码等
-	Db = "root:6833066@tcp(localhost:3306)/beego_blog?charset=utf8&loc=Local"
+	Db = "root:6833066@tcp(localhost:3306)/51job?charset=utf8&loc=Local"
 	//数据库日志
 	LogPath = "../log/db.log"
 	//开启日志？

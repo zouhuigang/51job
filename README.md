@@ -51,7 +51,13 @@ mysql数据库(建议数据库遵循中国-北京时间)
 	
 	go build webserver.go
 	./webserver
- 	
+ 
+ 配置账户密码51job/pika/args.go
+
+	var companyname=""
+	var userName = ""
+	var password = ""
+
  配置文件在51job/cons/cons.go
 
 	//数据库配置

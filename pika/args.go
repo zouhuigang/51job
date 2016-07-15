@@ -7,12 +7,13 @@ import (
 	// "strings"
 	"51job/util"
 )
+var companyname=""
+var userName = ""
+var password = ""
 
-var userName = "sunteng"
-var password = "sunteng@2015"
 var postdata = url.Values{
 	"ctmName": []string{
-		"舜飞",
+		companyname,
 	},
 	"userName": []string{
 		userName,
