@@ -1,5 +1,4 @@
-# 项目名
-pikapika
+# 项目名:pikapika
 
 # 介绍
 皮卡丘，十万伏特！
@@ -13,12 +12,12 @@ pikapika，振奋人心的口号！
 
 
 # 进展：
-一期：51job  2016/5 陈锦瀚
+一期：51job  2016/5 
 
 # PikaPika部署说明
 
 # 软件要求
-go环境  
+go环境  1.6  beego框架1.6
 mysql数据库(建议数据库遵循中国-北京时间)
 
 # 部署顺序：
@@ -29,17 +28,13 @@ mysql数据库(建议数据库遵循中国-北京时间)
 2.进入路径拉下项目
 
 	cd  /home/username/path
-	git clone git@git.server:sunteng/hr_tools.git
+	git clone https://www.github.com/hunterhug/51job
 
-3.更改项目名为51job
-
-	mv hr_tools/ 51job/
-
-4.进入51job/sh 运行init.sh补充外围包
+3.进入51job/sh 运行init.sh补充外围包
 
 	./init.sh
 
-5.进入51job/model将51job.sql导入数据库(可以忽略，因为开启服务时自动建表，但是可能出现问题)
+4.进入51job/model将51job.sql导入数据库(可以忽略，因为开启服务时自动建表，但是可能出现问题)
 
 
 ##  开启爬虫服务
@@ -63,7 +58,7 @@ mysql数据库(建议数据库遵循中国-北京时间)
 	//数据库配置
 	const (
 		//数据库账号:数据库密码@tcp(数据库ip:端口号)/数据库名?编码等
-		Db = "root:6833066@tcp(localhost:3306)/beego_blog?charset=utf8&loc=Local"
+		Db = "root:112344@tcp(localhost:3306)/beego_blog?charset=utf8&loc=Local"
 		//数据库日志
 		LogPath = "../log/db.log"
 		//开启日志？
@@ -95,11 +90,14 @@ mysql数据库(建议数据库遵循中国-北京时间)
 	httpaddr = "127.0.0.1" //地址
 	httpport = 8088         //端口
 	mysqluser = "root"
-	mysqlpass = "6833066"
+	mysqlpass = "45454"
 	mysqlurls = "127.0.0.1"
 	mysqlport = 3306
 	mysqldb   = "51job"
 	pikapika="127.0.0.1:8099" //爬虫控制台地址
+
+<img src='https://raw.githubusercontent.com/hunterhug/51job/master/img/step1.png' />
+<img src='https://raw.githubusercontent.com/hunterhug/51job/master/img/step2.png' />
 
 请自行修改
 
